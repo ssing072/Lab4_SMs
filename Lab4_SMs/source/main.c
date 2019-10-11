@@ -33,6 +33,7 @@ int main(void) {
                     }
                     else{
                         state = light_1;
+                    }
                 }
                 else{
                     state = wait;
