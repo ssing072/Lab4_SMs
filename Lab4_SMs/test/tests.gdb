@@ -36,6 +36,16 @@ expectPORTB 0x02
 expect state next_wait
 checkResult
 
+test "PINA: 0x01, 0x00 => PORTB: 02, state: next_wait"
+set state = first_wait
+setPINA 0x01
+continue 2
+setPINA 0x00
+continue 2
+expectPORTB 0x02
+expect state next_wait
+checkResult
+
 
 test "PINA: 0x01, 0x00, 0x01, 0x00 => PORTB: 02, state: first_wait"
 set state = init
@@ -49,19 +59,6 @@ setPINA 0x00
 continue 2
 expectPORTB 0x01
 expect state next_wait
-checkResult
-
-test "PINA: 0x01, 0x00, 0x01, 0x00 => PORTB: 02, state: pressA1"
-set state = init
-setPINA 0x01
-continue 2
-setPINA 0x00
-continue 2
-setPINA 0x01
-continue 2
-setPINA 0x00
-continue 2
-expectPORTB 0x01
 checkResult
 
 
