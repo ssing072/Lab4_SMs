@@ -33,7 +33,7 @@ continue 2
 setPINA 0x00
 continue 2
 expectPORTB 0x02
-expected state first_wait
+expected state next_wait
 checkResult
 
 test "PINA: 0x01, 0x00=> PORTB: 01, state: pressA1"
