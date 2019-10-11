@@ -49,12 +49,12 @@ int main(void) {
                 break;
             case wait:
                 break;
-            case change_lights:
+            case light_change:
                 if(PORTB == 0x01){
-                    PORTB == 0x02;
+                    PORTB = 0x02;
                 }
                 else if(PORTB == 0x02){
-                    PORTB == 0x01;
+                    PORTB = 0x01;
                 }
                 break;
         }
