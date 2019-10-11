@@ -48,7 +48,12 @@ int main(void) {
                 }
                 break;
            case light_2:
-                
+                if(PINA == 0){
+                    state = wait;
+                }
+                else{
+                    state = light_2;
+                }
                 break;
         }
         switch (state) {
