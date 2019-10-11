@@ -29,7 +29,7 @@ echo Running all tests..."\n\n
 
 # Test sequence from waitA0: A0, !A0, A1 => PORTB: 1
 test "PINA: 0x01, 0x00, 0x01 => PORTB: 02, state: pressA1"
-set state = waitA0
+set state = light_change
 setPINA 0x01
 continue 2
 setPINA 0x00
