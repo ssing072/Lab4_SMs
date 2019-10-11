@@ -20,6 +20,7 @@ int main(void) {
     enum states {init, wait, light_1, light_2} state;
     state = init;
     
+    unsigned char tempB = 0x00;
     /* Insert your solution below */
     while (1) {
         switch(state){
@@ -28,10 +29,10 @@ int main(void) {
                 break;
             case wait:
                 if((PINA & 0x01) == 1){
-                    if(PORTB == 0x01){
+                    if(tempB == 0x01){
                         state = light_2;
                     }
-                    else if(PORTB == 0x02){
+                    else if(tempB == 0x02){
                         state = light_1;
                     }
                 }
@@ -59,14 +60,17 @@ int main(void) {
         switch (state) {
             case init:
                 PORTB = 0x01;
+                tempB = 0x01;
                 break;
             case wait:
                 break;
             case light_1:
                 PORTB = 0x01;
+                tempB = 0x01;
                 break;
             case light_2:
                 PORTB = 0x02;
+                tempB = 0x02;
                 break;
         }
     }
