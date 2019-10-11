@@ -17,7 +17,7 @@ int main(void) {
     DDRA = 0x00; PORTA = 0xFF;
     DDRB = 0xFF; PORTB = 0x00;
     
-    enum states {init, wait, light_1, light_2} state;
+    enum states {init, wait, light_1, light_2, next_wait} state;
     state = init;
     
     unsigned char tempB = 0x00;
@@ -29,12 +29,7 @@ int main(void) {
                 break;
             case wait:
                 if((PINA & 0x01) == 1){
-                    if(tempB == 0x01){
-                        state = light_2;
-                    }
-                    else if(tempB == 0x02){
-                        state = light_1;
-                    }
+                    state = light_2;
                 }
                 else{
                     state = wait;
@@ -50,27 +45,34 @@ int main(void) {
                 break;
            case light_2:
                 if(PINA == 0){
-                    state = wait;
+                    state = next_wait;
                 }
                 else{
                     state = light_2;
+                }
+                break;
+           case next_wait:
+                if((PINA & 0x01) == 1){
+                    state = light_1;
+                }
+                else{
+                    state = next_wait;
                 }
                 break;
         }
         switch (state) {
             case init:
                 PORTB = 0x01;
-                tempB = 0x01;
                 break;
             case wait:
                 break;
+            case wait_next:
+                break;
             case light_1:
                 PORTB = 0x01;
-                tempB = 0x01;
                 break;
             case light_2:
                 PORTB = 0x02;
-                tempB = 0x02;
                 break;
         }
     }
