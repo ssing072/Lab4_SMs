@@ -86,7 +86,7 @@ continue 2
 setPINA 0x00
 continue 2
 expectPORTB 0x02
-expect state wait
+expect state next_wait
 checkResult
 
 # Add tests below
