@@ -35,7 +35,7 @@ continue 2
 setPINA 0x00
 continue 2
 expectPORTB 0x01
-expect state wait
+expect state light_2
 checkResult
 
 # Add tests below
