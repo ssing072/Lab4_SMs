@@ -28,7 +28,34 @@ echo Running all tests..."\n\n
 
 
 # Test sequence from waitA0: A0, !A0, A1 => PORTB: 1
+test "PINA: 0x01 => PORTB: 01, state: pressA1"
+set state = init
+setPINA 0x01
+continue 2
+expectPORTB 0x01
+checkResult
+
+test "PINA: 0x01, 0x00=> PORTB: 01, state: pressA1"
+set state = init
+setPINA 0x01
+continue 2
+setPINA 0x00
+continue 2
+expectPORTB 0x01
+checkResult
+
 test "PINA: 0x01, 0x00, 0x01 => PORTB: 02, state: pressA1"
+set state = init
+setPINA 0x01
+continue 2
+setPINA 0x00
+continue 2
+setPINA 0x01
+continue 2
+expectPORTB 0x02
+checkResult
+
+test "PINA: 0x01, 0x00, 0x01, 0x00 => PORTB: 02, state: pressA1"
 set state = init
 setPINA 0x01
 continue 2
@@ -38,7 +65,7 @@ setPINA 0x01
 continue 2
 setPINA 0x00
 continue 2
-expectPORTB 0x01
+expectPORTB 0x02
 checkResult
 
 # Add tests below
