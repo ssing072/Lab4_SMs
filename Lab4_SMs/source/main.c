@@ -35,7 +35,7 @@ int main(void) {
                 break;
             case light_1:
                 if(PINA == 0){
-                    state = wait;
+                    state = first_wait;
                 }
                 else{
                     state = light_1;
