@@ -67,7 +67,7 @@ setPINA 0x01
 continue 2
 setPINA 0x00
 continue 2
-expectPORTB 0x02
+expectPORTB 0x01
 checkResult
 
 
@@ -85,8 +85,8 @@ setPINA 0x01
 continue 2
 setPINA 0x00
 continue 2
-expectPORTB 0x01
-expect state wait;
+expectPORTB 0x02
+expect state wait
 checkResult
 
 # Add tests below
