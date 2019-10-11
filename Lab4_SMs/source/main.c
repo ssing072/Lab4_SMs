@@ -17,20 +17,20 @@ int main(void) {
     DDRA = 0x00; PORTA = 0xFF;
     DDRB = 0xFF; PORTB = 0x00;
     
-    enum states {init, wait, light_1, light_2, next_wait} state;
+    enum states {init, first_wait, light_1, light_2, next_wait} state;
     state = init;
     /* Insert your solution below */
     while (1) {
         switch(state){
             case init:
-                state = wait;
+                state = first_wait;
                 break;
-            case wait:
+            case first_wait:
                 if((PINA & 0x01) == 1){
                     state = light_2;
                 }
                 else{
-                    state = wait;
+                    state = first_wait;
                 }
                 break;
             case light_1:
@@ -62,7 +62,7 @@ int main(void) {
             case init:
                 PORTB = 0x01;
                 break;
-            case wait:
+            case first_wait:
                 break;
             case next_wait:
                 break;
