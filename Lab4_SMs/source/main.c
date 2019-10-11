@@ -24,7 +24,7 @@ int main(void) {
     while (1) {
         switch(state){
             case init:
-                state = WAIT;
+                state = wait;
                 break;
             case wait:
                 if((PINA & 0x01) == 1){
