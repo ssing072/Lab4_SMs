@@ -19,8 +19,6 @@ int main(void) {
     
     enum states {init, wait, light_1, light_2, next_wait} state;
     state = init;
-    
-    unsigned char tempB = 0x00;
     /* Insert your solution below */
     while (1) {
         switch(state){
@@ -66,7 +64,7 @@ int main(void) {
                 break;
             case wait:
                 break;
-            case wait_next:
+            case next_wait:
                 break;
             case light_1:
                 PORTB = 0x01;
