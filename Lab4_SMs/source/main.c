@@ -31,7 +31,7 @@ int main(void) {
                     if(PORTB == 0x01){
                         state = light_2;
                     }
-                    else{
+                    else if(PORTB == 0x02){
                         state = light_1;
                     }
                 }
