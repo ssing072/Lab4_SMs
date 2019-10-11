@@ -17,7 +17,7 @@ int main(void) {
     DDRA = 0x00; PORTA = 0xFF;
     DDRB = 0xFF; PORTB = 0x00;
     
-    enum states {init, wait, light_change} state;
+    enum states {init, wait, light_1, light_2} state;
     state = init;
     
     /* Insert your solution below */
@@ -28,18 +28,26 @@ int main(void) {
                 break;
             case wait:
                 if((PINA & 0x01) == 1){
-                    state = light_change;
+                    state = light_1;
                 }
                 else{
                     state = wait;
                 }
                 break;
-            case light_change:
+            case light_1:
                 if((PINA & 0x01) == 1){
-                    state = wait;
+                    state = light_2;
                 }
                 else if(PINA == 0){
-                    state = light_change;
+                    state = light_1;
+                }
+                break;
+           case light_2:
+                if((PINA & 0x01) == 1){
+                    state = light_1;
+                }
+                else if(PINA == 0){
+                    state = light_2;
                 }
                 break;
         }
@@ -49,13 +57,11 @@ int main(void) {
                 break;
             case wait:
                 break;
-            case light_change:
-                if(PORTB == 0x01){
-                    PORTB = 0x02;
-                }
-                else if(PORTB == 0x02){
-                    PORTB = 0x01;
-                }
+            case light_1:
+                PORTB = 0x01;
+                break;
+            case light_2:
+                PORTB = 0x02;
                 break;
         }
     }
