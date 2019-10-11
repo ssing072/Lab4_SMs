@@ -28,27 +28,26 @@ int main(void) {
                 break;
             case wait:
                 if((PINA & 0x01) == 1){
-                    state = light_1;
+                    if(PORTB == 0x01){
+                        state = light_2;
+                    }
+                    else{
+                        state = light_1;
                 }
                 else{
                     state = wait;
                 }
                 break;
             case light_1:
-                if((PINA & 0x01) == 1){
-                    state = light_2;
+                if(PINA == 0){
+                    state = wait;
                 }
-                else if(PINA == 0){
+                else{
                     state = light_1;
                 }
                 break;
            case light_2:
-                if((PINA & 0x01) == 1){
-                    state = light_1;
-                }
-                else if(PINA == 0){
-                    state = light_2;
-                }
+                
                 break;
         }
         switch (state) {
