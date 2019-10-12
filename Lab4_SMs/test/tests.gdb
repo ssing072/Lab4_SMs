@@ -65,9 +65,9 @@ continue 2
 setPINA 0x04
 continue 2
 setPINA 0x00
-continue 
+continue 2
 setPINA 0x02
-continue 
+continue 2
 expectPORTB 1
 expect state OPEN
 checkResult
