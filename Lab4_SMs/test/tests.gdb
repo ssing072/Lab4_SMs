@@ -31,7 +31,7 @@ set state = INIT
 setPINA 0x01
 continue 2
 expectPORTC 8
-expect state WAIT
+expect state INCREMENT
 checkResult
 
 
