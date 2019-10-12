@@ -90,7 +90,7 @@ int main(void) {
             case THIRD:
                 break;
             case OPEN:
-                PORTB = 0x01
+                PORTB = 0x01;
                 break;
         }
     }
