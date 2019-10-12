@@ -69,7 +69,7 @@ continue
 setPINA 0x02
 continue 
 expectPORTB 0
-expect state OPEN
+expect state PRESS_Y
 checkResult
 
 test "PINA: 0x00, state = THIRD => PORTB: 1, state = OPEN"
