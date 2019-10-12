@@ -41,28 +41,13 @@ int main(void) {
                 }
                 break;
             case INCREMENT:
-                if(PINA == 0){
-                    state = WAIT;
-                }
-                else{
-                    state = INCREMENT;
-                }
+                state = WAIT;
                 break;
             case DECREMENT:
-                if(PINA == 0){
-                    state = WAIT;
-                }
-                else{
-                    state = INCREMENT;
-                }
+                state = WAIT;
                 break;
             case RESET:
-                if(PINA == 0x00){
-                    state = WAIT;
-                }
-                else{
-                    state = RESET;    
-                }
+                state = WAIT;
         }   
         switch(state){
             case INIT:
