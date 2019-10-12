@@ -29,7 +29,7 @@ echo Running all tests..."\n\n
 
 test "PINA: 0x00 => PORTB: 0, state = WAIT"
 set state = INIT
-setPINA 0x00
+setPINA 0x04
 continue 2
 expectPORTB 0
 expect state WAIT
@@ -58,23 +58,19 @@ expectPORTB 0
 expect state SECOND
 checkResult
 
-test "PINA: 0x00, 0x01, 0x00 => PORTB: 0, state = SECOND"
+test "PINA: 0x01, 0x00, 0x02 => PORTB: 0, state = SECOND"
 set state = INIT
-setPINA 0x00
-continue 2
 setPINA 0x01
 continue 2
 setPINA 0x00
 continue 2
-setPINA 0x01
-continue 2
-setPINA 0x00
-continue 2
+setPINA 0x02
+continue 
 expectPORTB 0
 expect state THIRD
 checkResult
 
-test "PINA: 0x00 => PORTB: 0, state = OPEN"
+test "PINA: 0x00, state = THIRD => PORTB: 1, state = OPEN"
 set state = THIRD
 setPINA 0x00
 continue 2
