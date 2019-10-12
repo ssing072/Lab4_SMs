@@ -34,6 +34,14 @@ expectPORTC 8
 expect state INCREMENT
 checkResult
 
+test "PINA: 0x02 => PORTC: 6, state = DECREMENT"
+set state = INIT
+setPINA 0x02
+continue 2
+expectPORTC 6
+expect state DECREMENT
+checkResult
+
 
 test "PINA: 0x00 => PORTC: 0, state = RESET"
 set state = INIT
