@@ -17,7 +17,7 @@ int main(void) {
     DDRA = 0x00; PORTA = 0xFF;
     DDRC = 0xFF; PORTC = 0x00;
     
-    enum states {INIT, WAIT, PRESS_#, RELEASE_#, PRESS_Y, OPEN} state;
+    enum states {INIT, WAIT, PRESS_P, RELEASE_P, PRESS_Y, OPEN} state;
     state = INIT;
     /* Insert your solution below */
     while (1) {
@@ -27,18 +27,18 @@ int main(void) {
                 break;
             case WAIT:
                 if((PINA & 0x04) == 1){
-                    state = PRESS_#;   
+                    state = PRESS_P;   
                 }
                 else{
                     state = WAIT;    
                 }
                 break;
-            case PRESS_#:
+            case PRESS_P:
                 if((PINA & 0x04) == 1){
-                    state = PRESS_#;   
+                    state = PRESS_P;   
                 }
                 else if(PINA == 0){
-                    state = RELEASE_#;    
+                    state = RELEASE_P;    
                 }
                 else{
                     state = WAIT;    
@@ -46,7 +46,7 @@ int main(void) {
                 break;
             case RELEASE_#:
                 if(PINA == 0){
-                    state = RELEASE_#;   
+                    state = RELEASE_P;   
                 }
                 else if((PINA & 0x02) == 1){
                     state = PRESS_Y;    
@@ -83,9 +83,9 @@ int main(void) {
             case WAIT:
                 PORTB = 0x00;
                 break;
-            case PRESS_#:
+            case PRESS_P:
                 break;
-            case RELEASE_#:
+            case RELEASE_P:
                 break;
             case PRESS_Y:
                 break;
