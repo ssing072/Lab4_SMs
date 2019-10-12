@@ -59,7 +59,7 @@ expect state SECOND
 checkResult
 
 test "PINA: 0x00 => PORTB: 0, state = OPEN"
-set state = INIT
+set state = THIRD
 setPINA 0x00
 continue 2
 expectPORTB 0x01
