@@ -34,7 +34,7 @@ expectPORTC 8
 expect state INCREMENT
 checkResult
 
-test "PINA: 0x02 => PORTC: 6, state = DECREMENT"
+test "PINA: 0x02 => PORTC: 7, state = DECREMENT"
 set state = INIT
 setPINA 0x02
 continue 2
