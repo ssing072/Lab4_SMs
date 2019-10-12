@@ -65,12 +65,12 @@ int main(void) {
         }   
         switch(state){
             case INIT:
-                PORTC = 7;
+                PORTC = 0x07;
                 break;
             case WAIT:
                 break;
             case RESET:
-                PORTC = 0;
+                PORTC = 0x00;
                 break;
             case INCREMENT:
                 if(PORTC < 9){
