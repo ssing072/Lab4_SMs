@@ -44,7 +44,7 @@ int main(void) {
                     state = WAIT;    
                 }
                 break;
-            case RELEASE_#:
+            case RELEASE_P:
                 if(PINA == 0){
                     state = RELEASE_P;   
                 }
