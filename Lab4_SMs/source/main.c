@@ -18,7 +18,7 @@ int main(void) {
     DDRC = 0xFF; PORTC = 0x00;
     
     enum states {INIT, WAIT, INCREMENT, DECREMENT} state;
-    state = init;
+    state = INIT;
     /* Insert your solution below */
     while (1) {
         switch(state){
