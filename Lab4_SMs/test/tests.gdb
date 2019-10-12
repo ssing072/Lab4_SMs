@@ -27,7 +27,7 @@ echo ======================================================\n
 echo Running all tests..."\n\n
 
 
-test "PINA: 0x01 => PORTC: 8, state = INCREMENT"
+test "PINA: 0x01 => PORTC: 9, state = INCREMENT"
 set state = INIT
 setPINA 0x01
 continue 2
@@ -35,8 +35,16 @@ setPINA 0x01
 continue 2
 setPINA 0x01
 continue 2
-expectPORTC 8
+expectPORTC 9
 expect state INCREMENT
+checkResult
+
+test "PINA: 0x02 => PORTC: 8, state = DECREMENT"
+set state = INIT
+setPINA 0x02
+continue 2
+expectPORTC 8
+expect state DECREMENT
 checkResult
 
 test "PINA: 0x02 => PORTC: 7, state = DECREMENT"
@@ -44,14 +52,6 @@ set state = INIT
 setPINA 0x02
 continue 2
 expectPORTC 7
-expect state DECREMENT
-checkResult
-
-test "PINA: 0x02 => PORTC: 6, state = DECREMENT"
-set state = INIT
-setPINA 0x02
-continue 2
-expectPORTC 6
 expect state DECREMENT
 checkResult
 
