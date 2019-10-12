@@ -19,6 +19,7 @@ int main(void) {
     
     enum states {INIT, WAIT, INCREMENT, DECREMENT, RESET} state;
     state = INIT;
+    unsigned char tempOut = 0x00;
     /* Insert your solution below */
     while (1) {
         switch(state){
@@ -26,13 +27,13 @@ int main(void) {
                 state = WAIT;
                 break;
             case WAIT:
-                if((PINA & 0x01) == 1){
+                if(PINA == 1){
                     state = INCREMENT;
                 }
-                else if((PINA & 0x02) == 1){
+                else if(PINA == 2){
                     state = DECREMENT;
                 }
-                else if((PINA & 0x01) == 1 && (PINA & 0x02) == 1){
+                else if(PINA == 0){
                     state = RESET;    
                 }
                 else{
@@ -65,24 +66,25 @@ int main(void) {
         }   
         switch(state){
             case INIT:
-                PORTC = 0x07;
+                tempOut = 7;
                 break;
             case WAIT:
                 break;
             case RESET:
-                PORTC = 0x00;
+               tempOut = 0;
                 break;
             case INCREMENT:
-                if(PORTC < 9){
-                    PORTC = PORTC + 1;
+                if(tempOut < 9){
+                    tempOut = tempOut + 1;
                 }
                 break;
             case DECREMENT:
-                if(PORTC > 0){
-                    PORTC = PORTC + 1;
+                if(tempOut > 0){
+                    tempOut = tempOut + 1;
                 }
                 break;
         }
+        PORTC = tempOut;
     }
     return 1;
 }
