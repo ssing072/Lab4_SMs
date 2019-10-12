@@ -65,7 +65,7 @@ int main(void) {
                 break;
             case DECREMENT:
                 if(tempOut > 0){
-                    tempOut = tempOut + 1;
+                    tempOut = tempOut - 1;
                 }
                 break;
         }
