@@ -17,7 +17,7 @@ int main(void) {
     DDRA = 0x00; PORTA = 0xFF;
     DDRC = 0xFF; PORTC = 0x00;
     
-    enum states {INIT, WAIT, INCREMENT, DECREMENT} state;
+    enum states {INIT, WAIT, INCREMENT, DECREMENT, RESET} state;
     state = INIT;
     /* Insert your solution below */
     while (1) {
@@ -32,7 +32,9 @@ int main(void) {
                 else if((PINA & 0x02) == 1){
                     state = DECREMENT;
                 }
-                else if((PINA == 0x03
+                else if((PINA & 0x01) == 1 && (PINA & 0x02) == 1){
+                    state = RESET;    
+                }
                 else{
                     state = WAIT;
                 }
@@ -53,12 +55,22 @@ int main(void) {
                     state = INCREMENT;
                 }
                 break;
+            case RESET:
+                if(PINA == 0x00){
+                    case = WAIT;
+                }
+                else{
+                    case = RESET;    
+                }
         }   
         switch(state){
             case INIT:
                 PORTC = 7;
                 break;
             case WAIT:
+                break;
+            case RESET:
+                PORTC = 0;
                 break;
             case INCREMENT:
                 if(PORTC < 9){
