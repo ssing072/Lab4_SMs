@@ -26,7 +26,7 @@ int main(void) {
                 state = WAIT;
                 break;
             case WAIT:
-                if((PINA & 0x04) == 1){
+                if(PINA == 4){
                     state = PRESS_P;   
                 }
                 else{
@@ -34,7 +34,7 @@ int main(void) {
                 }
                 break;
             case PRESS_P:
-                if((PINA & 0x04) == 1){
+                if(PINA == 4){
                     state = PRESS_P;   
                 }
                 else if(PINA == 0){
@@ -48,7 +48,7 @@ int main(void) {
                 if(PINA == 0){
                     state = RELEASE_P;   
                 }
-                else if((PINA & 0x02) == 1){
+                else if(PINA == 2){
                     state = PRESS_Y;    
                 }
                 else{
@@ -56,10 +56,10 @@ int main(void) {
                 }
                 break;
             case PRESS_Y:
-                if((PINA & 0x02) == 1){
+                if(PINA == 2){
                     state = OPEN;   
                 }
-                else if((PINA & 0x02) == 0){
+                else if(PINA == 0){
                     state = OPEN;    
                 }
                 else{
