@@ -57,10 +57,10 @@ int main(void) {
                 break;
             case RESET:
                 if(PINA == 0x00){
-                    case = WAIT;
+                    state = WAIT;
                 }
                 else{
-                    case = RESET;    
+                    state = RESET;    
                 }
         }   
         switch(state){
