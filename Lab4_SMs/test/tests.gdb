@@ -35,11 +35,11 @@ expectPORTB 0
 expect state WAIT
 checkResult
 
-test "PINA: 0x00, 0x01 => PORTB: 0, state = FIRST"
+test "PINA: 0x00, 0x01 => PORTB: 0, state = PRESS_P"
 set state = INIT
-setPINA 0x00
+setPINA 0x04
 continue 2
-setPINA 0x01
+setPINA 0x00
 continue 2
 expectPORTB 0
 expect state PRESS_P
