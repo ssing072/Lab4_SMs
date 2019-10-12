@@ -16,6 +16,7 @@ int main(void) {
     /* Insert DDR and PORT initializations */
     DDRA = 0x00; PORTA = 0xFF;
     DDRC = 0xFF; PORTC = 0x00;
+    
     enum states {INIT, WAIT, INCREMENT, DECREMENT, RESET} state;
     state = INIT;
     unsigned char tempOut = 0x00;
