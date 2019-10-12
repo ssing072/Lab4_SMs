@@ -35,7 +35,7 @@ expectPORTB 0
 expect state WAIT
 checkResult
 
-test "PINA: 0x00, 0x01 => PORTB: 0, state = PRESS_P"
+test "PINA: 0x00, 0x04 => PORTB: 0, state = PRESS_P"
 set state = INIT
 setPINA 0x00
 continue 2
@@ -50,7 +50,7 @@ test "PINA: 0x00, 0x01, 0x00 => PORTB: 0, state = RELEASE_P"
 set state = INIT
 setPINA 0x00
 continue 2
-setPINA 0x01
+setPINA 0x04
 continue 2
 setPINA 0x00
 continue 2
@@ -60,14 +60,16 @@ checkResult
 
 test "PINA: 0x01, 0x00, 0x02 => PORTB: 0, state = PRESS_Y"
 set state = INIT
-setPINA 0x01
-continue 2
 setPINA 0x00
 continue 2
+setPINA 0x04
+continue 2
+setPINA 0x00
+continue 
 setPINA 0x02
 continue 
 expectPORTB 0
-expect state PRESS_Y
+expect state OPEN
 checkResult
 
 test "PINA: 0x00, state = THIRD => PORTB: 1, state = OPEN"
