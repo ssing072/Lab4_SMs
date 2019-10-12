@@ -17,7 +17,7 @@ int main(void) {
     DDRA = 0x00; PORTA = 0xFF;
     DDRC = 0xFF; PORTC = 0x00;
     
-    enum states {INIT, WAIT, FIRST, SECOND, THIRD, OPEN} state;
+    enum states {INIT, WAIT, PRESS_#, RELEASE_#, PRESS_Y, OPEN} state;
     state = INIT;
     /* Insert your solution below */
     while (1) {
@@ -26,40 +26,40 @@ int main(void) {
                 state = WAIT;
                 break;
             case WAIT:
-                if(PINA == 1){
-                    state = FIRST;   
+                if((PINA & 0x04) == 1){
+                    state = PRESS_#;   
                 }
                 else{
                     state = WAIT;    
                 }
                 break;
-            case FIRST:
-                if(PINA == 1){
-                    state = FIRST;   
+            case PRESS_#:
+                if((PINA & 0x04) == 1){
+                    state = PRESS_#;   
                 }
                 else if(PINA == 0){
-                    state = SECOND;    
+                    state = RELEASE_#;    
                 }
                 else{
                     state = WAIT;    
                 }
                 break;
-            case SECOND:
+            case RELEASE_#:
                 if(PINA == 0){
-                    state = SECOND;   
+                    state = RELEASE_#;   
                 }
-                else if(PINA == 2){
-                    state = THIRD;    
+                else if((PINA & 0x02) == 1){
+                    state = PRESS_Y;    
                 }
                 else{
                     state = WAIT;    
                 }
                 break;
-            case THIRD:
-                if(PINA == 2){
-                    state = THIRD;   
+            case PRESS_Y:
+                if((PINA & 0x02) == 1){
+                    state = OPEN;   
                 }
-                else if(PINA == 0){
+                else if((PINA & 0x02) == 0){
                     state = OPEN;    
                 }
                 else{
@@ -83,11 +83,11 @@ int main(void) {
             case WAIT:
                 PORTB = 0x00;
                 break;
-            case FIRST:
+            case PRESS_#:
                 break;
-            case SECOND:
+            case RELEASE_#:
                 break;
-            case THIRD:
+            case PRESS_Y:
                 break;
             case OPEN:
                 PORTB = 0x01;
