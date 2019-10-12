@@ -26,7 +26,6 @@
 echo ======================================================\n
 echo Running all tests..."\n\n
 
-
 test "PINA: 0x01 => PORTC: 9, state = INCREMENT"
 set state = INIT
 setPINA 0x01
@@ -92,7 +91,6 @@ expectPORTC 1
 expect state INCREMENT
 checkResult
 
-# Add tests below
 
 # Report on how many tests passed/tests ran
 set $passed=$tests-$failed
