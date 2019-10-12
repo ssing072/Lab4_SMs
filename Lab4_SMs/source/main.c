@@ -20,6 +20,7 @@ int main(void) {
     enum states {INIT, WAIT, INCREMENT, DECREMENT, RESET} state;
     state = INIT;
     unsigned char tempOut = 0x00;
+    tempOut = 7;
     /* Insert your solution below */
     while (1) {
         switch(state){
