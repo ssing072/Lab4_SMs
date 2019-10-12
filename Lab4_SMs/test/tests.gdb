@@ -29,7 +29,7 @@ echo Running all tests..."\n\n
 
 test "PINA: 0x00 => PORTB: 0, state = WAIT"
 set state = INIT
-setPINA 0x00
+setPINA 0x04
 continue 2
 expectPORTB 0
 expect state WAIT
